@@ -1,0 +1,33 @@
+{
+  "name": "@maxbeatty/style-guide",
+  "version": "1.0.0",
+  "description": "Style guide for TypeScript, ESLint, and Prettier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/maxbeatty/style-guide"
+  },
+  "keywords": [
+    "style",
+    "linter",
+    "tsconfig",
+    "eslint",
+    "eslintconfig",
+    "prettier"
+  ],
+  "author": "Max Beatty",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
+  },
+  "prettier": "./prettier/index.js"
+}

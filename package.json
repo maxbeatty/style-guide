@@ -4,9 +4,11 @@
   "description": "Style guide for TypeScript, ESLint, and Prettier",
   "type": "module",
   "exports": {
+    "./eslint/*": "./eslint/*.js",
     "./prettier": "./prettier/index.js"
   },
   "scripts": {
+    "eslint": "eslint --cache --max-warnings 0 .",
     "prepare": "husky",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write ."
@@ -26,6 +28,8 @@
   "author": "Max Beatty",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3"
@@ -35,9 +39,13 @@
   },
   "prettier": "./prettier/index.js",
   "peerDependencies": {
-    "prettier": ">=3.0.0"
+    "eslint": ">=9",
+    "prettier": ">=3"
   },
   "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
     "prettier": {
       "optional": true
     }
@@ -47,5 +55,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.14.0",
+    "globals": "^15.12.0"
   }
 }

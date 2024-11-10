@@ -2,10 +2,14 @@
   "name": "@maxbeatty/style-guide",
   "version": "1.0.0",
   "description": "Style guide for TypeScript, ESLint, and Prettier",
-  "main": "index.js",
+  "type": "module",
+  "exports": {
+    "./prettier": "./prettier/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -29,5 +33,19 @@
   "lint-staged": {
     "*": "prettier --ignore-unknown --write"
   },
-  "prettier": "./prettier/index.js"
+  "prettier": "./prettier/index.js",
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

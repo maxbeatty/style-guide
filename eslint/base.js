@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import pluginPromise from "eslint-plugin-promise";
 
 const builtInRules = {
   "array-callback-return": "error",
@@ -82,6 +83,18 @@ const builtInRules = {
   yoda: "error",
 };
 
+const promiseRules = {
+  "promise/always-return": "error",
+  "promise/catch-or-return": "error",
+  "promise/no-callback-in-promise": "error",
+  "promise/no-multiple-resolved": "error",
+  "promise/no-new-statics": "error",
+  "promise/no-promise-in-callback": "error",
+  "promise/no-return-in-finally": "error",
+  "promise/no-return-wrap": "error",
+  "promise/valid-params": "error",
+};
+
 const styleRules = {
   camelcase: "error",
   "func-names": ["error", "as-needed"],
@@ -94,23 +107,35 @@ const styleRules = {
   "no-nested-ternary": "error",
   "no-unneeded-ternary": "error",
   "prefer-destructuring": "error",
+  "promise/no-nesting": "error",
+  "promise/param-names": "error",
+  "promise/prefer-await-to-callbacks": "error",
+  "promise/prefer-await-to-then": "error",
 };
 
 /** @type {import("eslint").Linter.Config} */
 export default {
   // Tell ESLint not to ignore dot-files, which are ignored by default.
   ignores: ["!.*.js"],
+
   languageOptions: {
     ecmaVersion: "latest",
   },
+
   linterOptions: {
     noInlineConfig: true,
     // Report unused `eslint-disable` comments.
     reportUnusedDisableDirectives: true,
   },
+
+  plugins: {
+    promise: pluginPromise,
+  },
+
   rules: {
     ...js.configs.recommended.rules,
     ...builtInRules,
+    ...promiseRules,
     ...styleRules,
   },
 };

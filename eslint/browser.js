@@ -1,3 +1,4 @@
+import noUnsanitized from "eslint-plugin-no-unsanitized";
 import globals from "globals";
 
 import base from "./base.js";
@@ -16,8 +17,14 @@ export default {
     globals: globals.browser,
   },
 
+  plugins: {
+    "no-unsanitized": noUnsanitized,
+  },
+
   rules: {
     ...base.rules,
     ...builtinRules,
+    "no-unsanitized/method": "error",
+    "no-unsanitized/property": "error",
   },
 };

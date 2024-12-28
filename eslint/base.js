@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import checkFilePlugin from "eslint-plugin-check-file";
+import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments";
 import pluginPromise from "eslint-plugin-promise";
 
 const builtInRules = {
@@ -84,6 +85,15 @@ const builtInRules = {
   yoda: "error",
 };
 
+const commentsRules = {
+  "comments/disable-enable-pair": ["error", { allowWholeFile: true }],
+  "comments/no-aggregating-enable": "error",
+  "comments/no-duplicate-disable": "error",
+  "comments/no-unlimited-disable": "error",
+  "comments/no-unused-disable": "error",
+  "comments/no-unused-enable": "error",
+};
+
 const promiseRules = {
   "promise/always-return": "error",
   "promise/catch-or-return": "error",
@@ -123,6 +133,7 @@ const styleRules = {
   ],
   "check-file/filename-naming-convention": ["error", { "**/*": "KEBAB_CASE" }],
   "check-file/folder-naming-convention": ["error", { "**": "KEBAB_CASE" }],
+  "comments/require-description": "error",
   "promise/no-nesting": "error",
   "promise/param-names": "error",
   "promise/prefer-await-to-callbacks": "error",
@@ -146,12 +157,14 @@ export default {
 
   plugins: {
     "check-file": checkFilePlugin,
+    comments: commentsPlugin,
     promise: pluginPromise,
   },
 
   rules: {
     ...js.configs.recommended.rules,
     ...builtInRules,
+    ...commentsRules,
     ...promiseRules,
     ...styleRules,
   },

@@ -33,6 +33,7 @@
   "prettier": "./prettier/index.js",
   "dependencies": {
     "@eslint/js": "^9.14.0",
+    "eslint-plugin-check-file": "^2.8.0",
     "eslint-plugin-n": "^17.13.2",
     "eslint-plugin-no-unsanitized": "^4.1.2",
     "eslint-plugin-promise": "^7.1.0",

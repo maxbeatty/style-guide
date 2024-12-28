@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import checkFilePlugin from "eslint-plugin-check-file";
 import pluginPromise from "eslint-plugin-promise";
 
 const builtInRules = {
@@ -107,6 +108,21 @@ const styleRules = {
   "no-nested-ternary": "error",
   "no-unneeded-ternary": "error",
   "prefer-destructuring": "error",
+  "check-file/no-index": "error",
+  "check-file/filename-blocklist": [
+    "error",
+    {
+      "**/*common*": "",
+      "**/*helper*": "",
+      "**/*util*": "",
+    },
+    {
+      errorMessage:
+        "Name after what they provide, not what they contain. - https://dave.cheney.net/2019/01/08/avoid-package-names-like-base-util-or-common",
+    },
+  ],
+  "check-file/filename-naming-convention": ["error", { "**/*": "KEBAB_CASE" }],
+  "check-file/folder-naming-convention": ["error", { "**": "KEBAB_CASE" }],
   "promise/no-nesting": "error",
   "promise/param-names": "error",
   "promise/prefer-await-to-callbacks": "error",
@@ -129,6 +145,7 @@ export default {
   },
 
   plugins: {
+    "check-file": checkFilePlugin,
     promise: pluginPromise,
   },
 

@@ -24,6 +24,7 @@ export default {
   rules: {
     ...base.rules,
     ...builtinRules,
+    "import/no-nodejs-modules": "error",
     "no-unsanitized/method": "error",
     "no-unsanitized/property": "error",
   },

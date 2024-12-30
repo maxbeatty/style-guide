@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import checkFilePlugin from "eslint-plugin-check-file";
 import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments";
+import importPlugin from "eslint-plugin-import";
 import pluginPromise from "eslint-plugin-promise";
 
 const builtInRules = {
@@ -94,6 +95,50 @@ const commentsRules = {
   "comments/no-unused-enable": "error",
 };
 
+const importRules = {
+  "import/no-absolute-path": "error",
+  "import/default": "error",
+  "import/export": "error",
+  "import/named": "error",
+  "import/namespace": "error",
+  "import/no-cycle": "error",
+  "import/no-deprecated": "warn",
+  "import/no-dynamic-require": "error",
+  "import/no-empty-named-blocks": "error",
+  "import/no-extraneous-dependencies": "error",
+  "import/no-import-module-exports": "error",
+  "import/no-mutable-exports": "error",
+  "import/no-named-as-default": "error",
+  "import/no-named-as-default-member": "error",
+  "import/no-relative-packages": "error",
+  "import/no-self-import": "error",
+  "import/no-unused-modules": [
+    "error",
+    { missingExports: true, unusedExports: true },
+  ],
+  "import/unambiguous": "error",
+  "import/no-unresolved": "error",
+  "import/no-useless-path-segments": "error",
+  // style
+  "import/consistent-type-specifier-style": "error",
+  "import/exports-last": "error",
+  "import/first": "error",
+  "import/group-exports": "error",
+  "import/newline-after-import": "error",
+  "import/no-anonymous-default-export": "error",
+  "import/no-duplicates": "error",
+  "import/no-unassigned-import": "warn",
+  "import/order": [
+    "error",
+    {
+      alphabetize: { order: "asc", orderImportKind: "asc" },
+      groups: ["builtin", "external", "parent", "sibling", "index"],
+      named: { types: "types-last" },
+      "newlines-between": "always",
+    },
+  ],
+};
+
 const promiseRules = {
   "promise/always-return": "error",
   "promise/catch-or-return": "error",
@@ -158,6 +203,7 @@ export default {
   plugins: {
     "check-file": checkFilePlugin,
     comments: commentsPlugin,
+    import: importPlugin,
     promise: pluginPromise,
   },
 
@@ -165,6 +211,7 @@ export default {
     ...js.configs.recommended.rules,
     ...builtInRules,
     ...commentsRules,
+    ...importRules,
     ...promiseRules,
     ...styleRules,
   },
